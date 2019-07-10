@@ -1,0 +1,43 @@
+---
+title: "R Markdown Presentation & Plotly"
+author: "Sarah khaled"
+date: "July 10, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,comment = NA)
+```
+
+## Week 3 assienment
+
+Create an interactive scatter plot using plotly package in R
+
+- Use mtcars dataset
+- Show the relation ship between the weight (wt), and the miles per gallon(mpg)
+- size your scatter plot with the horsepower (hp), and identify the transmission type (Automatic, Manual)
+
+## Preview the mtcars dataset
+
+```{r}
+data(mtcars)
+head(mtcars)
+```
+```{r echo=FALSE}
+mtcars$am   <- factor(mtcars$am,labels=c("Automatic","Manual")) #give meaningful name to the transmission types
+```
+
+
+## mtcars
+
+```{r, echo=FALSE,warning=FALSE}
+suppressPackageStartupMessages({library(plotly)})
+library("ggplot2")
+```
+
+```{r, warning=FALSE}
+plot_ly(mtcars,x= ~wt,y= ~mpg,mode="markers",color = ~am,size=~hp,type='scatter', mode='markers')
+```
+
+
+## Thanks
